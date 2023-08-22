@@ -2,6 +2,8 @@ const express = require("express");
 const bodyparser = require("body-parser");
 const request = require("request");
 const https = require("https");
+require('dotenv').config();
+const apiKey = process.env.API_KEY;
 
 const app = express();
 
@@ -37,7 +39,7 @@ app.post("/", function (req, res) {
 
   const options = {
     method: "POST",
-    auth: "yogi:485f51de590f2cc0094c632d8a65886f-us21",
+    auth: `yogi:${apiKey}`,
   };
 
   const request = https.request(url, options, function (response) {
